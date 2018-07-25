@@ -1,0 +1,53 @@
+stages:
+  - deploy_test
+  - deploy_production
+
+cache:
+  paths:
+    - node_modules/
+
+# 部署测试服务器
+部署测试环境:
+  stage: deploy_test
+  only:
+    - master
+  tags:
+    - blackcatfetest
+  script:
+    - npm config set registry https://registry.npmjs.org
+    - npm install yarn
+    - yarn install
+    - npm run build-test
+    - rm -rf /usr/share/nginx/blackcathtml/*
+    - cp -r dist/* /usr/share/nginx/blackcathtml/
+
+
+
+# 部署生产服务器
+部署生产环境服务器 1:
+  stage: deploy_production
+  only:
+    - tags
+  tags:
+    - blackcatfeproduction1
+  script:
+    - npm config set registry http://registry.cnpmjs.org
+    - npm install -g yarn
+    - yarn install
+    - npm run build
+    - rm -rf /usr/share/nginx/html/*
+    - cp -r dist/* /usr/share/nginx/html/
+
+部署生产环境服务器 2:
+  stage: deploy_production
+  only:
+    - tags
+  tags:
+    - blackcatfeproduction2
+  script:
+    - npm config set registry http://registry.cnpmjs.org
+    - npm install -g yarn
+    - yarn install
+    - npm run build
+    - rm -rf /usr/share/nginx/html/*
+    - cp -r dist/* /usr/share/nginx/html/

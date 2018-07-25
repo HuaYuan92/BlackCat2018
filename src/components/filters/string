@@ -1,0 +1,32 @@
+export default {
+  name: function (val) {
+    if(!val){
+      return
+    }
+    let arr = val.split('');
+    let str = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      str += "*"
+    }
+    return str;
+  },
+  id: function (val) {
+    if(!val){
+      return
+    }
+    let arr =val.split("");
+    arr[10]="*";
+    arr[11]="*";
+    arr[12]="*";
+    arr[13]="*";
+    return arr.join('');
+  },
+  phone: function (val) {
+    if(!val){
+      return
+    }
+    return (val || "").replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+  }
+}
+
+

@@ -1,0 +1,32 @@
+export default function (val) {
+  let str;
+  switch (val) {
+    case 'M0':
+      str = '1-15天';
+      break;
+    case 'M1':
+      str = '16-30天';
+      break;
+    case 'M2':
+      str = '31-60天';
+      break;
+    case 'M3':
+      str = '61-90天';
+      break;
+    case 'M4':
+      str = '91-120天';
+      break;
+    case 'M5':
+      str = '121-150天';
+      break;
+    case 'M6':
+      str = '151-180天';
+      break;
+    case 'M6+':
+      str = '180天';
+      break;
+
+  }
+  return str
+
+}
