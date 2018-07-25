@@ -162,16 +162,14 @@
       custom-class="dialog-login"
       :visible.sync="outerVisible"
     >
+      <LoginForm :callback="Agreement"></LoginForm>
       <el-dialog
         width="1%"
         title="内层 Dialog"
         :visible.sync="innerVisible"
         append-to-body>
       </el-dialog>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="outerVisible = false">取 消</el-button>
-        <el-button type="primary" @click="innerVisible = true">打开内层 Dialog</el-button>
-      </div>
+      <div slot="footer"></div>
     </el-dialog>
   </div>
 </template>
@@ -315,18 +313,10 @@
       Step(num) {
         this.step = num;
       },
-      handleSubmit(name) {
-        if (!this.checkbox) {
-          this.$Message.info('尚未同意《黑猫察服务协议》，无法登陆');
-          return
-        }
-        ;
-        this.$refs[name].validate((valid) => {
-          if (valid) {
-            this.$store.dispatch('LoginCheck');
-          }
-        })
+      Agreement() {
+        this.innerVisible = true
       }
+
     }
   }
 </script>
@@ -1079,7 +1069,8 @@
     animation: Float1 3s ease-in-out -1.5s infinite alternate;
     cursor: pointer;
   }
-  .dialog-login{
+
+  .dialog-login {
     width: 456px;
   }
 </style>
