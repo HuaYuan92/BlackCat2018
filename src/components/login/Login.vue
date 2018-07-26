@@ -162,13 +162,7 @@
       custom-class="dialog-login"
       :visible.sync="outerVisible"
     >
-      <LoginForm :callback="Agreement"></LoginForm>
-      <el-dialog
-        width="1%"
-        title="内层 Dialog"
-        :visible.sync="innerVisible"
-        append-to-body>
-      </el-dialog>
+      <LoginForm></LoginForm>
       <div slot="footer"></div>
     </el-dialog>
   </div>
@@ -289,7 +283,6 @@
         img5,
         img10,
         outerVisible: false,
-        innerVisible: false,
         menu,
         bg1,
         bg2,
@@ -313,10 +306,6 @@
       Step(num) {
         this.step = num;
       },
-      Agreement() {
-        this.innerVisible = true
-      }
-
     }
   }
 </script>

@@ -29,6 +29,22 @@
           </div>
         </el-input>
       </el-form-item>
+      <el-form-item class="form-item item3">
+        <div class="checkbox">
+          <el-checkbox v-model="checkbox">我已阅读并同意</el-checkbox>
+          <div class="agreement">《黑猫察服务协议》</div>
+        </div >
+        <div class="to-forget">忘记密码?</div>
+      </el-form-item>
+      <el-form-item class="form-item item4">
+        <el-button
+          type="primary"
+          @click="submitForm('loginInfo')"
+        >登录</el-button>
+      </el-form-item>
+      <el-form-item class="form-item item5">
+        还没有账户?<div class="to-apply">立即申请试用</div>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -36,16 +52,18 @@
 <script>
   import img1 from '@/assets/image/v2-56.png'
   import img2 from '@/assets/image/v2-57.png'
+
   export default {
     name: "loginform",
-    props: ['callback'],
+    props: [''],
     data: function () {
       return {
         img1,
         img2,
+        checkbox: true,
         loginInfo: {
-          name: '',
-          psd: ''
+          userName: '',
+          password: ''
         },
         rules: {
           userName: [
@@ -63,16 +81,29 @@
           ]
         }
       }
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
     }
   }
 </script>
 
 <style lang="less" rel="stylesheet/less" type="text/less">
+  @blue:#3F7BFF;
   .login-form {
     padding: 0 28px;
+    color: #475262;
     .login-form-title {
       font-size: 22px;
-      color: rgba(71, 82, 98, 1);
       padding-bottom: 40px;
     }
     .form-item {
@@ -85,11 +116,47 @@
         line-height: 50px !important;
         display: inline-block;
         padding: 0 10px;
-        img{
+        img {
           width: 20px;
           margin-top: 15px;
         }
       }
+    }
+    .item3 .el-form-item__content{
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      .checkbox{
+        flex:3;
+        display: flex;
+        .agreement{
+          color: @blue;
+          cursor: pointer;
+        }
+      }
+      .to-forget{
+        flex: 1;
+        text-align: right ;
+        color: @blue;
+        cursor: pointer;
+      }
+    }
+    .item4 .el-button{
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+      font-size: 16px;
+    }
+    .item5 .el-form-item__content{
+      .to-apply{
+        display: inline-block;
+        color:@blue;
+        cursor: pointer;
+      }
+    }
+    .item5{
+      margin: 0;
     }
 
   }
