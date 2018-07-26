@@ -25,20 +25,13 @@ router.beforeEach((to, from, next) => {
     window.document.title=`黑猫察 - ${to.meta.title}`;
   }
   let requireAuth = to.meta.requireAuth;
-  /*
-  * 判断后端sid与localstorage同时存在
-  * */
-  // if (requireAuth) {
-  //   let token = VueCookie.get('token')
-  //   let user = localStorage.getItem('user')
-  //   if (token && user) {
-  //
-  //   } else {
-  //     Util.openModal('没有登录系统')
-  //     router.push({path: '/login', query: {to: JSON.stringify(to)}})
-  //   }
-  // }
-  next()
+
+  if (requireAuth) {
+    next(false)
+  }else {
+    next()
+  }
+
 })
 
 /* eslint-disable no-new */

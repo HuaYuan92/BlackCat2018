@@ -48,14 +48,6 @@ const actions = {
     })
 
   },
-  ReadLocal({commit, state, rootState}) {
-    let user=getCookie('user')?JSON.parse(getCookie('user')):'';
-    if(user){
-      console.log('...');
-    }else {
-      router.push({path:'/login'})
-    }
-  },
   Quit(){
     deleteCookie('user');
     window.location.reload();
