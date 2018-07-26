@@ -155,8 +155,8 @@
       position: fixed;
       width: 118px;
       height: 55px;
-      top: 10px;
-      left: 4%;
+      top: 14px;
+      left: 78px;
       z-index: 2;
     }
     .hr {

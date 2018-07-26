@@ -953,10 +953,10 @@
     position: fixed;
     display: flex;
     justify-content: space-between;
-    padding: 20px 80px;
+    padding: 14px 80px;
     img {
-      width: 110px;
-      height: 50px;
+      width: 118px;
+      height: 55px;
     }
     .login-btn-group {
       display: flex;
