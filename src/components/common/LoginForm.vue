@@ -22,6 +22,7 @@
         <el-input
           v-model="loginInfo.password"
           placeholder="请输入密码"
+          type="password"
           :maxlength="6"
         >
           <div slot="prefix">
@@ -43,13 +44,14 @@
         >登录</el-button>
       </el-form-item>
       <el-form-item class="form-item item5">
-        还没有账户?<div class="to-apply">立即申请试用</div>
+        还没有账户?<div class="to-apply" @click="ToApply">立即申请试用</div>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   import img1 from '@/assets/image/v2-56.png'
   import img2 from '@/assets/image/v2-57.png'
 
@@ -61,10 +63,6 @@
         img1,
         img2,
         checkbox: true,
-        loginInfo: {
-          userName: '',
-          password: ''
-        },
         rules: {
           userName: [
             {
@@ -82,11 +80,12 @@
         }
       }
     },
+    computed: mapGetters(['loginInfo']),
     methods: {
       SubmitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$store.dispatch('Login');
           } else {
             console.log('error submit!!');
             return false;
@@ -95,6 +94,9 @@
       },
       ToAgreement(){
         window.open('/agreement')
+      },
+      ToApply(){
+        this.router.push({path:'/apply'})
       }
     }
   }

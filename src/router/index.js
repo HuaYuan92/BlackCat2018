@@ -26,8 +26,12 @@ export default new Router({
       component: Components.Agreement
     },
     {
-      path: '/apply',
-      component: Components.Apply,
+      path: '/register',
+      meta: {
+        title: '用户注册',
+        requireAuth: false
+      },
+      component: Components.Register,
     },
     {
       path: '/forget',
@@ -61,7 +65,7 @@ export default new Router({
       children: [
         {
           path: '',
-          redirect: 'companies',
+          redirect: '/companies',
         },
         {
           path: 'individuals',

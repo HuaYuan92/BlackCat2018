@@ -8,7 +8,7 @@
   export default {
     name: 'app',
     beforeCreate: function () {
-      // this.$store.dispatch('ReadLocal');
+      this.$store.dispatch('ReadLocal');
     },
     data: function () {
       return {}

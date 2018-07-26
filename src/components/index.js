@@ -10,9 +10,9 @@ import Step2 from './forget/ForgetStep2'
 import Step3 from './forget/ForgetStep3'
 import Step4 from './forget/ForgetStep4'
 
-/*apply*/
-import Apply from './apply/Apply'
-import Agreement from './apply/Agreement'
+/*register*/
+import Register from './register/Register'
+import Agreement from './register/Agreement'
 
 /*blacklist*/
 import PersonResult from './blacklist/PersonResult'
@@ -56,7 +56,7 @@ import Pay3 from './pay/Pay3'
 export default {
   Home,
   Login,
-  Apply,
+  Register,
   Agreement,
   PersonResult,
   PersonArr,

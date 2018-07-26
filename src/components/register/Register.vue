@@ -5,7 +5,7 @@
 
 <script>
   export default {
-    name: ""
+    name: "register"
   }
 </script>
 

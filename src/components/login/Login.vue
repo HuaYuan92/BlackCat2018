@@ -133,12 +133,10 @@
           <div class="login-btn" @click="Login">
             登录
           </div>
-          <div class="login-btn">
+          <div class="login-btn" @click="ToApply">
             免费试用
           </div>
-
         </div>
-
       </div>
       <ul class="login-menu">
         <li v-for="(v,i) of menu" :class="step===(i+1)?'active':''" @click="Step(i+1)">
@@ -168,7 +166,6 @@
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
   import img1 from '@/assets/image/v2-1.png'
   import img2 from '@/assets/image/v2-31.png'
   import img3 from '@/assets/image/v2-38.png'
@@ -293,12 +290,6 @@
         step: 1,
       }
     },
-    computed: mapGetters(
-      [
-        'logininfo'
-      ]
-    ),
-
     methods: {
       Login() {
         this.outerVisible = true;
@@ -306,6 +297,9 @@
       Step(num) {
         this.step = num;
       },
+      ToApply(){
+        this.router.push({path:'/register'})
+      }
     }
   }
 </script>

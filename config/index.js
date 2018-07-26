@@ -14,13 +14,13 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8082,
+    port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       '/API': {
-        target: 'http://admin.uniccat.com',
+        target: 'http://admin_h.cycredit.com.cn',
         changeOrigin: true,
         pathRewrite: {
           '^/API': '/'

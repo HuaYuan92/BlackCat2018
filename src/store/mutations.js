@@ -180,66 +180,6 @@ const userCheck = function (url) {
         Router.push({path: path});
         console.log(res.data);
         let data = res.data;
-        for (let k in data) {
-          if (data[k].api.name == "企业查询") {
-            state.logininfo.ent_api = {
-              _id: data[k]._id,
-              uri: data[k].api.uri,
-              name: data[k].api.name,
-              price: data[k].price,
-              billing_mode: data[k].billing_mode,
-              category: "company"
-            }
-          } else if (data[k].api.uri.split('')[6] == '1' && (data[k].api.uri.split('api')[2] == '1' || data[k].api.uri.split('api')[2] == '4' || data[k].api.uri.split('api')[2] == '15' || data[k].api.uri.split('api')[2] == '18')) {
-            arr.push({
-              _id: data[k]._id,
-              uri: data[k].api.uri,
-              name: data[k].api.name,
-              price: data[k].price,
-              billing_mode: data[k].billing_mode,
-              category: "person"
-            });
-          } else if (data[k].api.uri.split('api')[2] == '6' && data[k].api.uri.split('')[6] == '1') {
-            state.logininfo.two_api = {
-              _id: data[k]._id,
-              uri: data[k].api.uri,
-              name: data[k].api.name,
-              price: data[k].price,
-              billing_mode: data[k].billing_mode,
-              category: data[k].api.category
-            }
-          } else if (data[k].api.uri.split('api')[2] == '7' && data[k].api.uri.split('')[6] == '1') {
-            state.logininfo.three_api = {
-              _id: data[k]._id,
-              uri: data[k].api.uri,
-              name: data[k].api.name,
-              price: data[k].price,
-              billing_mode: data[k].billing_mode,
-              category: data[k].api.category
-            }
-          }
-          else if (data[k].api.uri.split('api')[2] == '8' && data[k].api.uri.split('')[6] == '1') {
-            state.logininfo.four_api = {
-              _id: data[k]._id,
-              uri: data[k].api.uri,
-              name: data[k].api.name,
-              price: data[k].price,
-              billing_mode: data[k].billing_mode,
-              category: data[k].api.category
-            }
-          }
-        }
-        if (data.balance <= 2000) {
-          if (JSON.parse(getCookie('balance')) == '1') {
-            vue.$Message.error('您的账户余额为' + data.balance + '元，请及时充值，以免影响您的使用');
-            setCookie('balance', '0')
-          }
-        } else {
-          setCookie('balance', '1')
-        }
-        console.log(JSON.parse(getCookie('balance')));
-        ;
-        state.logininfo.api = arr;
       }).catch(function (err) {
         console.log(err);
       });
@@ -622,7 +562,7 @@ const email = function () {
   });
 }
 // 无状态不跳转登录
-const noneUser = ['/apply', '/forget', '/forget/step1', '/forget/step2', '/forget/step3', '/forget/step4'];
+const noneUser = ['/register', '/forget', '/forget/step1', '/forget/step2', '/forget/step3', '/forget/step4'];
 const mutations = {
   // 登录
   [types.LOGIN_CHECK](state) {

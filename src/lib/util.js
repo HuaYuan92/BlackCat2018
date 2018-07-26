@@ -36,7 +36,7 @@ let util = {
     if (type == 'hold' && axiosStatus == 403) {
       str = '保存失败,该记录可能已保存';
     }
-    if (type == 'telcode' || type == 'apply') {
+    if (type == 'telcode' || type == 'register') {
       if (axiosStatus == 400 || axiosStatus == 500) {
         str = err.response.data;
       }
@@ -52,8 +52,8 @@ let util = {
     }
   },
   //COOKIE
-  setCookie: (name, value) => {
-    let Days = 30;
+  setCookie: (name, value,time=30) => {
+    let Days = time;
     let exp = new Date();
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
