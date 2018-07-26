@@ -9,7 +9,7 @@ import actions from './action'
 Vue.use(Vuex);
 export default new Vuex.Store({
   modules:{
-    mutations,
+    // mutations,
     Wallet,
     Verification,
     Venture

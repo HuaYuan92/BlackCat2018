@@ -12,6 +12,7 @@ import Step4 from './forget/ForgetStep4'
 
 /*apply*/
 import Apply from './apply/Apply'
+import Agreement from './apply/Agreement'
 
 /*blacklist*/
 import PersonResult from './blacklist/PersonResult'
@@ -56,6 +57,7 @@ export default {
   Home,
   Login,
   Apply,
+  Agreement,
   PersonResult,
   PersonArr,
   PersonHold,

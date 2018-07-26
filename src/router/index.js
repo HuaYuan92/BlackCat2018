@@ -18,6 +18,14 @@ export default new Router({
       component: Components.Login
     },
     {
+      path: '/agreement',
+      meta: {
+        title: '服务协议',
+        requireAuth: false
+      },
+      component: Components.Agreement
+    },
+    {
       path: '/apply',
       component: Components.Apply,
     },

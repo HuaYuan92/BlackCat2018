@@ -32,14 +32,14 @@
       <el-form-item class="form-item item3">
         <div class="checkbox">
           <el-checkbox v-model="checkbox">我已阅读并同意</el-checkbox>
-          <div class="agreement">《黑猫察服务协议》</div>
+          <div class="agreement" @click="ToAgreement">《黑猫察服务协议》</div>
         </div >
         <div class="to-forget">忘记密码?</div>
       </el-form-item>
       <el-form-item class="form-item item4">
         <el-button
           type="primary"
-          @click="submitForm('loginInfo')"
+          @click="SubmitForm('loginInfo')"
         >登录</el-button>
       </el-form-item>
       <el-form-item class="form-item item5">
@@ -76,14 +76,14 @@
               required: true, message: '密码不能为空', trigger: 'blur'
             },
             {
-              min: 6, max: 12, message: '请输入不少于6位密码', trigger: 'blur'
+              min: 6, max: 15, message: '请输入不少于6位密码', trigger: 'blur'
             }
           ]
         }
       }
     },
     methods: {
-      submitForm(formName) {
+      SubmitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -93,6 +93,9 @@
           }
         });
       },
+      ToAgreement(){
+        window.open('/agreement')
+      }
     }
   }
 </script>
