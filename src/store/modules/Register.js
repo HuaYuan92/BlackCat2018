@@ -2,6 +2,8 @@ import axios from 'axios'
 import {Message} from 'element-ui';
 import router from '@/router/index'
 import util from '@/lib/util.js'
+import api from '@/api/index'
+
 
 const {setCookie, getCookie, deleteCookie} = util;
 
@@ -14,7 +16,11 @@ const state = {
     entCode:'',
     photoUrl:'',
     entEmail:'',
-    uniform:''
+    uniform:'',
+    linkName:'',
+    mobile:'',
+    imgCode:'',
+    telCode:''
   }
 };
 

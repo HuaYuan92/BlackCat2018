@@ -3,6 +3,7 @@ import {Message} from 'element-ui';
 import router from '@/router/index'
 import md5 from 'js-md5'
 import util from '@/lib/util.js'
+import api from '@/api/index'
 
 const {setCookie, getCookie, deleteCookie} = util;
 
@@ -23,7 +24,7 @@ const getters = {
 
 const actions = {
   Login({commit, state}) {
-    axios.get("/api/v1/login", {
+    axios.get(api.api1, {
       params: {
         userName: state.loginInfo.userName,
         password: md5(state.loginInfo.password),

@@ -74,7 +74,7 @@
     name: "step1",
     props: ['callback'],
     mounted() {
-      this.axios.get('/api/v1/user_group').then((res) => {
+      this.axios.get(this.api.api3).then((res) => {
         if (res.status === 201) {
           this.userGroup = res.data;
         } else {
@@ -89,7 +89,7 @@
       let key = new Date().getTime() + "" + Math.floor(Math.random() * 100000000000);
       key = 'HMC' + key;
       console.log('key=' + key);
-      this.axios.get('/api/v1/qiniu/token/' + key).then(function (res) {
+      this.axios.get(`${this.api.api2+key}`).then(function (res) {
         token = res.data;
         console.log('token1=' + token);
         Qiniu.uploader(qiniuOption("img_box", "img"))
@@ -280,11 +280,6 @@
       height: 140px;
       border: none;
       visibility: hidden;
-    }
-    #img:hover:before{
-      position: absolute;
-      content: "点击上传";
-      display: inline-block;
     }
     .item4 .el-form-item__content {
       display: flex;
