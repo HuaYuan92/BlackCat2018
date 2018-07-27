@@ -85,6 +85,10 @@ export default new Router({
         },
         {
           path: 'companies',
+          meta: {
+            title: '用户注册',
+            requireAuth: true
+          },
           component: Components.EntResult,
         },
         {
