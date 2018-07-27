@@ -1,14 +1,21 @@
 import axios from 'axios'
 import {Message} from 'element-ui';
 import router from '@/router/index'
-import md5 from 'js-md5'
 import util from '@/lib/util.js'
 
 const {setCookie, getCookie, deleteCookie} = util;
 
 
 const state = {
-  registerInfo: {}
+  registerInfo: {
+    apiList:[],
+    userGroup:'',
+    entName:'',
+    entCode:'',
+    photoUrl:'',
+    entEmail:'',
+    uniform:''
+  }
 };
 
 // getters

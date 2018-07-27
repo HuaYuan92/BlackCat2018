@@ -4,7 +4,7 @@
       <i class="el-icon-warning"></i>
       <span>选择您感兴趣的产品，至少选择一项</span>
     </div>
-    <el-checkbox-group v-model="productionList">
+    <el-checkbox-group v-model="registerInfo.apiList">
       <div class="checkbox-title">个人产品</div>
       <div class="checkbox-item" v-for="i of arr1">
         <el-checkbox :label="i.value" :key="i.value">
@@ -19,7 +19,7 @@
       </div>
     </el-checkbox-group>
     <div class="btn">
-      <el-button type="primary" :disabled="disabled">
+      <el-button type="primary" :disabled="disabled" @click="callback()">
         下一步
       </el-button>
     </div>
@@ -29,8 +29,10 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     name: "step1",
+    props:['callback'],
     data: function () {
       return {
         arr1: [
@@ -70,13 +72,13 @@
           {
             tip: '企业风险核验',
             value: 11
-          }],
-        productionList: []
+          }]
       }
     },
     computed: {
+      ...mapGetters(['registerInfo']),
       disabled: function () {
-        if (this.productionList.length === 0) {
+        if (this.registerInfo.apiList.length === 0) {
           return true
         } else {
           return false

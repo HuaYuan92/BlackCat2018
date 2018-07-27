@@ -83,6 +83,7 @@
     computed: mapGetters(['loginInfo']),
     methods: {
       SubmitForm(formName) {
+        console.log(this.$refs);
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$store.dispatch('Login');

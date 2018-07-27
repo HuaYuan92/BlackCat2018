@@ -20,6 +20,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color:#475262 ;
+    min-width: 1024px;
+    margin: 0 auto;
   }
 
   li {
